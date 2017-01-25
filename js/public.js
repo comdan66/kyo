@@ -44,7 +44,6 @@ $(function () {
   var c = Math.floor ($tagsD.width () / w);
   var r = $tagsA.length - c;
 
-  $tags.attr ('class', 'n' + c);
   $tagsA.filter (':nth-child(-n+' + c + ')').removeClass ('hide');
   $tagsB.click (function () {
     var i = parseInt ($tags.attr ('data-i'), 10);
@@ -57,7 +56,7 @@ $(function () {
 
       $tags.attr ('data-i',  i);
 
-      if (i + 1 < r)
+      if (i < r)
         $(this).attr ('class', 'icon-keyboard_arrow_right');
       else
         $(this).attr ('class', 'icon-keyboard_arrow_right dis');
@@ -72,7 +71,7 @@ $(function () {
 
       $tags.attr ('data-i',  i);
 
-      if (i - 1 <= 0)
+      if (i <= 0)
         $(this).attr ('class', 'icon-keyboard_arrow_left dis');
       else
         $(this).attr ('class', 'icon-keyboard_arrow_left');

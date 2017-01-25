@@ -617,12 +617,12 @@ $tablet: 720px;
   @media screen and (min-width: 0) and (max-width: #{$tablet}) {
     display: none;
   }
-  @for $i from 1 through 10 {
+  @for $i from 1 through 100 {
     &[data-i="#{$i}"] {
       .container {
         > div {
           a {
-            @for $j from 1 through 10 {
+            @for $j from 1 through 100 {
               &:nth-child(#{$j}) {
                 left: ($j - $i - 1) * (100px + 10px);
               }
@@ -634,6 +634,18 @@ $tablet: 720px;
   }
   &[data-i="0"] {
     .container {
+
+      > a:first-child {
+        display: none;
+
+        > div {
+          > a {
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+        }
+      }
       > a:last-child {
         &:before {
           content: "\e900";
@@ -673,6 +685,10 @@ $tablet: 720px;
         // }
         &:first-child {
           @include opacity(0);
+        }
+        &:hover {
+          color: rgba(151, 148, 118, 1.00);
+          border-color: rgba(238, 239, 240, 1.00);
         }
       }
     }
@@ -908,6 +924,160 @@ $tablet: 720px;
         float: left;
         display: inline-block;
         color: rgba(171, 172, 174, 1.00);
+      }
+    }
+  }
+}
+
+#nav {
+  display: inline-block;
+  width: 100%;
+  margin-top: 25px;
+  
+  .container {
+    @include clearfix();
+    
+    span {
+      float: left;
+      display: inline-block;
+      width: 50%;
+      @include clearfix();
+      a {
+        float: left;
+        display: inline-block;
+        text-decoration: none;
+        color: rgba(173, 174, 175, 1.00);
+        @include transition(color .3s);
+        
+        &:hover {
+          color: rgba(138, 143, 161, 1.00);
+          &:before {
+            color: rgba(173, 174, 175, 1.00);
+          }
+        }
+        + a {
+          margin-left: 5px;
+
+          &:before {
+            content: ">";
+            font-size: 14px;
+            margin-top: 2px;
+            display: inline-block;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
+    time {
+      display: inline-block;
+      width: 50%;
+      float: left;
+      text-align: right;
+      font-size: 12px;
+      margin-top: 2px;
+      color: rgba(172, 173, 174, 1.00);
+    }
+  }
+}
+
+#title {
+  display: inline-block;
+  width: 100%;
+  
+  .container {
+    text-align: left;
+  }
+}
+#article {
+  margin-top: 25px;
+  .container {
+    text-align: left;
+    p {
+      line-height: 24px;
+      margin-top: 5px;
+      &:empty {
+        margin-top: 30px;
+      }
+      a {
+        color: rgba(97, 173, 151, 1.00);
+      }
+    }
+  }
+}
+#article_cover {
+  .container {
+    height: 400px;
+  }
+}
+#article_tags {
+  .container {
+    @include clearfix();
+    
+    a {
+      float: left;
+      display: inline-block;
+      color: rgba(174, 175, 176, 1.00);
+      border: 1px solid rgba(174, 175, 176, 1.00);
+      height: 22px;
+      font-size: 13px;
+      padding: 0 5px;
+      text-decoration: none;
+      line-height: 22px - 2px;
+      margin: 5px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+      @include transition(color .3s, border-color .3s);
+      
+      &:hover {
+        color: rgba(153, 143, 120, 1.00);
+        border-color: rgba(153, 143, 120, 1.00);
+      }
+
+      @include border-radius(23px / 2);
+    }
+  }
+}
+#pages {
+  display: inline-block;
+  width: 100%;
+  height: 70px;
+  margin-top: 35px;
+
+  .container {
+    height: 100%;
+    border-top: 1px solid rgba(234, 235, 236, 1.00);
+    border-bottom: 1px solid rgba(234, 235, 236, 1.00);
+    @include clearfix();
+    padding-top: 18px;
+    
+    .prev {
+      float: left;
+    }
+    .home {
+      float: center;
+    }
+    .next {
+      float: right;
+    }
+    a {
+      height: 30px;
+      line-height: 30px - 2px;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      color: rgba(151, 148, 118, 1.00);
+      border: 1px solid rgba(238, 239, 240, 1.00);
+      @include border-radius(30px / 2);
+      @include transition(color .3s, border-color .3s);
+      padding: 0 10px;
+
+      &:hover {
+        color: rgba(153, 143, 120, 1.00);
+        border-color: rgba(153, 143, 120, 1.00);
       }
     }
   }
